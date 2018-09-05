@@ -11,7 +11,9 @@ public class MyMenuListener implements ActionListener {
         } else if (e.getActionCommand().equals("Undo")) {
             Tools.Revoke();
         } else if (e.getActionCommand().equals("Save")) {
-            
+            Tools.Save();
+        } else if (e.getActionCommand().equals("Open")) {
+            Tools.Open();
         }
     }
 }

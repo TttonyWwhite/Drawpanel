@@ -1,6 +1,8 @@
 package shape;
 
 import java.awt.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
@@ -29,6 +31,35 @@ public class Shape {
 
         w = Math.abs(x2 - x1);
         h = Math.abs(y2 - y1);
+    }
+
+    public Shape(FileReader fileReader) throws IOException {
+        char[] c = new char[10];
+
+        fileReader.read(c, 0, 10);
+        color = new Color(Integer.parseInt(new String(c)));
+
+        fileReader.read(c, 0, 10);
+        lineWidth = Integer.parseInt(new String(c));
+
+        fileReader.read(c, 0, 10);
+        int x1 = Integer.parseInt(new String(c));
+
+        fileReader.read(c, 0, 10);
+        int y1 = Integer.parseInt(new String(c));
+
+        fileReader.read(c, 0, 10);
+        int x2 = Integer.parseInt(new String(c));
+
+        fileReader.read(c, 0, 10);
+        int y2 = Integer.parseInt(new String(c));
+
+        points.add(new MyPoint(x1, y1));
+        points.add(new MyPoint(x2, y2));
+
+        w = Math.abs(x2 - x1);
+        h = Math.abs(y2 - y1);
+        min = new Point(Math.min(x1, x2), Math.min(y1, y2));
     }
 
     /**
@@ -61,6 +92,8 @@ public class Shape {
 
     public void output(PrintWriter printWriter) {
         printWriter.printf("%010d%010d%010d%010d%010d%010d\r\n", color.getRGB(), lineWidth, points.elementAt(0).x,
+                points.elementAt(0).y, points.elementAt(1).x, points.elementAt(1).y);
+        System.out.printf("%010d%010d%010d%010d%010d%010d\r\n", color.getRGB(), lineWidth, points.elementAt(0).x,
                 points.elementAt(0).y, points.elementAt(1).x, points.elementAt(1).y);
     }
 

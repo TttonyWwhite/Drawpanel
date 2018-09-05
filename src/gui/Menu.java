@@ -14,6 +14,7 @@ public class Menu extends JMenuBar{
 
     JMenuItem jMenuItem_new;
     JMenuItem jMenuItem_save;
+    JMenuItem jMenuItem_open;
     JMenuItem jMenuItem_undo;
 
     public Menu() {
@@ -25,6 +26,7 @@ public class Menu extends JMenuBar{
 
         jMenuItem_new = new JMenuItem("New");
         jMenuItem_save = new JMenuItem("Save");
+        jMenuItem_open = new JMenuItem("Open");
         jMenuItem_undo = new JMenuItem("Undo");
 
         add(jMenu_File);
@@ -32,16 +34,18 @@ public class Menu extends JMenuBar{
 
         jMenu_File.add(jMenuItem_new);
         jMenu_File.add(jMenuItem_save);
-
+        jMenu_File.add(jMenuItem_open);
         jMenu_Edit.add(jMenuItem_undo);
 
         jMenuItem_new.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
         jMenuItem_save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+        jMenuItem_open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
         jMenuItem_new.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_MASK));
 
         MyMenuListener menuListener = new MyMenuListener();
         jMenuItem_new.addActionListener(menuListener);
         jMenuItem_save.addActionListener(menuListener);
+        jMenuItem_open.addActionListener(menuListener);
         jMenuItem_undo.addActionListener(menuListener);
     }
 }

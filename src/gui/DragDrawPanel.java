@@ -129,17 +129,17 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        Point p = e.getPoint();
-        JTextField textField = new JTextField("输入类型");
-        textField.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    textField.setEditable(false);
-                }
-            });
-        textField.setBounds(p.x-35, p.y-10, 70, 20);
-        this.add(textField);
-        repaint();
+//        Point p = e.getPoint();
+//        JTextField textField = new JTextField("输入类型");
+//        textField.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    textField.setEditable(false);
+//                }
+//            });
+//        textField.setBounds(p.x-35, p.y-10, 70, 20);
+//        this.add(textField);
+//        repaint();
 
     }
 

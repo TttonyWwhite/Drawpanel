@@ -1,5 +1,6 @@
 package listener;
 
+import fileControl.FileOpener;
 import fileControl.FileSaver;
 import gui.DrawShape;
 
@@ -17,6 +18,11 @@ public class Tools {
         DrawShape.pnlDisplayArea.repaint();
     }
 
+    private static void JOpen() {
+        FileOpener opener = new FileOpener();
+        DrawShape.pnlDisplayArea.repaint();
+    }
+
     public static int windowExit() {
         //todo 保存
         System.exit(0);
@@ -27,6 +33,8 @@ public class Tools {
     public static void New() {
         Jnew();
     }
+
+    public static void Open() {JOpen();}
 
     public static void Save() {
         FileSaver fileSaver = new FileSaver();

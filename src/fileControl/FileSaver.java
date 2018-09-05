@@ -27,8 +27,11 @@ public class FileSaver {
 
             fileWriter = new FileWriter(jFileChooser.getSelectedFile());
             printWriter = new PrintWriter(fileWriter);
-            for(Shape s : DrawShape.shapes)
+            for(Shape s : DrawShape.shapes){
                 s.output(printWriter);
+                System.out.println(s.toString());
+            }
+
 
             printWriter.close();
             fileWriter.close();
