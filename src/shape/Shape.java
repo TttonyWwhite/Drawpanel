@@ -93,8 +93,6 @@ public class Shape {
     public void output(PrintWriter printWriter) {
         printWriter.printf("%010d%010d%010d%010d%010d%010d\r\n", color.getRGB(), lineWidth, points.elementAt(0).x,
                 points.elementAt(0).y, points.elementAt(1).x, points.elementAt(1).y);
-        System.out.printf("%010d%010d%010d%010d%010d%010d\r\n", color.getRGB(), lineWidth, points.elementAt(0).x,
-                points.elementAt(0).y, points.elementAt(1).x, points.elementAt(1).y);
     }
 
     public MyPoint getStartPoint() {

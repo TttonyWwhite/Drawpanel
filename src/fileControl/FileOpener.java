@@ -2,6 +2,7 @@ package fileControl;
 
 import gui.DrawShape;
 import shape.Dot;
+import shape.Tag;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -32,13 +33,17 @@ public class FileOpener {
                         int a = 'G';
                         fileReader.read();
                         fileReader.read();
-
                         while (a == fileReader.read()) {
                             dot.readmore(fileReader);
                             fileReader.read();
                             fileReader.read();
                         }
                         DrawShape.shapes.add(dot);
+                        break;
+                    case 'T':
+                        Tag tag = new Tag(fileReader);
+                        DrawShape.tags.add(tag);
+                        break;
                 }
             }
             fileReader.close();

@@ -4,6 +4,7 @@ import listener.Tools;
 import shape.Dot;
 import shape.MyPoint;
 import shape.Shape;
+import shape.Tag;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -83,6 +84,12 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
 
             dot.DrawShape(g2);
         }
+
+        for(Tag tag : DrawShape.tags) {
+            JLabel label = tag.getLabel();
+            label.setBounds(tag.getX(), tag.getY(), tag.getW(), tag.getH());
+            add(label);
+        }
     }
 
     @Override
@@ -158,6 +165,7 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
         }
         label.setBounds(dot.getStopPoint().x, dot.getStopPoint().y, 45, 20);
         this.add(label);
+        DrawShape.tags.add(new Tag(label, dot.getStopPoint().x, dot.getStopPoint().y, 45, 20));
         repaint();
 
     }

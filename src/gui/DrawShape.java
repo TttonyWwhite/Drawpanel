@@ -2,6 +2,7 @@ package gui;
 
 
 import listener.WindowCloseListener;
+import shape.Tag;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -29,6 +30,8 @@ public class DrawShape extends JFrame {
     public static JButton checkBtn = new JButton("识别图形");
 
     public static Vector<shape.Shape> shapes = new Vector<>();
+
+    public static Vector<Tag> tags = new Vector<>();
 
     ButtonGroup shapeGroup = new ButtonGroup();
     ButtonGroup drawGroup = new ButtonGroup();

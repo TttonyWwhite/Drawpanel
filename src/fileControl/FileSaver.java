@@ -2,6 +2,7 @@ package fileControl;
 
 import gui.DrawShape;
 import shape.Shape;
+import shape.Tag;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -29,10 +30,11 @@ public class FileSaver {
             printWriter = new PrintWriter(fileWriter);
             for(Shape s : DrawShape.shapes){
                 s.output(printWriter);
-                System.out.println(s.toString());
             }
 
-
+            for(Tag t : DrawShape.tags) {
+                t.output(printWriter);
+            }
             printWriter.close();
             fileWriter.close();
             isSaved = true;
