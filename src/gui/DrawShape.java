@@ -7,9 +7,7 @@ import shape.Tag;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.Vector;
 
 public class DrawShape extends JFrame {
@@ -73,12 +71,9 @@ public class DrawShape extends JFrame {
         pnlShape.add(checkBtn, 0);
 
 
-        checkBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pnlDisplayArea.checkShape();
-                pnlDisplayArea.countClear();
-            }
+        checkBtn.addActionListener(e -> {
+            pnlDisplayArea.checkShape();
+            pnlDisplayArea.countClear();
         });
 
 

@@ -11,12 +11,12 @@ public class WindowCloseListener implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        Tools.windowExit();
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-
+        Tools.windowExit();
     }
 
     @Override
