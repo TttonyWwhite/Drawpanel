@@ -1,4 +1,4 @@
-package fileControl;
+package controller;
 
 import gui.DrawShape;
 import shape.Shape;

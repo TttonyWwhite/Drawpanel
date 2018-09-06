@@ -1,9 +1,7 @@
 package gui;
 
-import listener.Tools;
 import shape.Dot;
 import shape.MyPoint;
-import shape.Shape;
 import shape.Tag;
 
 import javax.swing.*;
