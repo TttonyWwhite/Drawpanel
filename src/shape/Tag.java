@@ -50,12 +50,16 @@ public class Tag {
 
     public void output(PrintWriter printWriter) {
         printWriter.printf("T");
-        if(label.getText().equals("圆形")) {
-            printWriter.printf("%010d", 1);
-        } else if(label.getText().equals("三角形")) {
-            printWriter.printf("%010d", 2);
-        } else if (label.getText().equals("矩形")) {
-            printWriter.printf("%010d", 3);
+        switch (label.getText()) {
+            case "圆形":
+                printWriter.printf("%010d", 1);
+                break;
+            case "三角形":
+                printWriter.printf("%010d", 2);
+                break;
+            case "矩形":
+                printWriter.printf("%010d", 3);
+                break;
         }
         printWriter.printf("%010d%010d%010d%010d\r\n",  x, y, w, h);
     }

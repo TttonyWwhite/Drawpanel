@@ -1,5 +1,4 @@
 package gui;
-
 import shape.Dot;
 import shape.MyPoint;
 import shape.Tag;
@@ -9,18 +8,19 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseListener {
     /**
      * 左上角
      */
-    private Point Start = null;
+    private Point Start;
 
     /**
      * 右上角
      */
-    private Point Stop = null;
+    private Point Stop;
 
     /** 是否绘制虚线矩形* */
     private boolean dottedTag = true;
@@ -33,19 +33,19 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
     /** 笔画数统计 **/
     private int count = 0;
 
-    public static int width = 1;
+    static int width = 1;
 
-    public static int w = 0;
+    private static int w = 0;
 
-    public static int h = 0;
+    private static int h = 0;
 
-    Dot dot;
+    private Dot dot;
 
-    public DragDrawPanel() {
+    DragDrawPanel() {
         setPreferredSize(new Dimension(600, 600));
         Border border = new LineBorder(Color.black);
         setBorder(border);
-        setBackground(color.white);
+        setBackground(Color.white);
         Start = new MyPoint(0, 0);
         Stop = new MyPoint(0,0);
         dot = new Dot();
@@ -59,12 +59,12 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
         color = ColorHandler.color;
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(color);
-        /** 宽度 **/
+        /* 宽度 **/
         w = Math.abs(Stop.x - Start.x);
-        /** 高度 **/
+        /* 高度 **/
         h = Math.abs(Stop.y - Start.y);
 
-        /** 用起点终点的最小值作为起点 **/
+        /* 用起点终点的最小值作为起点 **/
         Point min = new Point(0, 0);
         min.x = Math.min(Stop.x, Start.x);
         min.y = Math.min(Stop.y, Start.y);
@@ -98,8 +98,8 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
             dot.addPoint(Start.x, Start.y, Stop.x, Stop.y);
             Start = Stop;
         }
-            /**
-             * 这里repaint的时候会调用到上面的paintComponent方法。
+            /*
+              这里repaint的时候会调用到上面的paintComponent方法。
              */
             e.getComponent().repaint();
 
@@ -148,11 +148,14 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
 
     }
 
-    public Vector<shape.Shape> getShapes() {
+    Vector<shape.Shape> getShapes() {
         return DrawShape.shapes;
     }
 
-    public void checkShape() {
+    void checkShape() {
+        //todo convert the shape in panel to bufferedImage
+
+
         JLabel label = new JLabel();
         if (count == 1) {
             label.setText("圆形");
@@ -161,6 +164,7 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
         } else if (count == 4) {
             label.setText("矩形");
         }
+
         label.setBounds(dot.getStopPoint().x, dot.getStopPoint().y, 45, 20);
         this.add(label);
         DrawShape.tags.add(new Tag(label, dot.getStopPoint().x, dot.getStopPoint().y, 45, 20));
@@ -168,7 +172,7 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
 
     }
 
-    public void countClear() {
+    void countClear() {
         this.count = 0;
     }
 
@@ -187,5 +191,15 @@ public class DragDrawPanel extends JPanel implements MouseMotionListener, MouseL
 
     }
 
+    public BufferedImage createImage(JPanel panel) {
+
+        int w = panel.getWidth();
+        int h = panel.getHeight();
+        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = bi.createGraphics();
+        panel.paint(g);
+        g.dispose();
+        return bi;
+    }
 
 }

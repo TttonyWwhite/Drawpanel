@@ -7,22 +7,22 @@ import java.io.PrintWriter;
 import java.util.Vector;
 
 public class Shape {
-    protected Vector<MyPoint> points = new Vector<>();
+    Vector<MyPoint> points = new Vector<>();
 
-    protected Color color;
+    Color color;
 
-    protected int lineWidth;
+    int lineWidth;
 
     /** 最左下角的点 **/
-    protected Point min;
+    private Point min;
 
-    protected int w;
+    private int w;
 
-    protected int h;
+    private int h;
 
-    public Shape(){}
+    Shape(){}
 
-    public Shape(Color color, int width, int x1, int y1, int x2, int y2) {
+    Shape(Color color, int width, int x1, int y1, int x2, int y2) {
         min = new Point(Math.min(x1, x2), Math.min(y1, y2));
         this.color = color;
         this.lineWidth = width;
@@ -33,7 +33,7 @@ public class Shape {
         h = Math.abs(y2 - y1);
     }
 
-    public Shape(FileReader fileReader) throws IOException {
+    Shape(FileReader fileReader) throws IOException {
         char[] c = new char[10];
 
         fileReader.read(c, 0, 10);
@@ -82,10 +82,10 @@ public class Shape {
     }
 
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         int i = 0;
         for(MyPoint p : points) {
-            str += ("Point" + (++i) + ":" + p.toString() + " ");
+            str.append("Point").append(++i).append(":").append(p.toString()).append(" ");
         }
         return "Color=" + color + "Width=" + lineWidth + " " + str;
     }
